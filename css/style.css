@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+  --primary-color: hsl(172, 67%, 45%);
+
+  --vd-cyan: hsl(183, 100%, 15%);
+  --dark-gcyan: hsl(186, 14%, 43%);
+  --dark-gcyan2: hsl(184, 14%, 56%);
+  --light-gcyan: hsl(185, 41%, 84%);
+  --light-cyan2: hsl(189, 41%, 97%);
+  --white: hsl(0, 0%, 100%);
+  --fs: 24px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color: var(--light-gcyan);
+}
+
+span,
+input {
+  display: block;
+}
+
+.logo h1 {
+  text-transform: uppercase;
+}
+
+.container {
+  background-color: var(--white);
+  padding: 2rem;
+  display: flex;
+  max-width: 100%;
+  width: 920px;
+  border-radius: 1.7rem;
+  gap: 2rem;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: var(--dark-gcyan);
+  font-weight: 700;
+}
+
+.bill-box {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.3rem 1rem;
+  background-color: var(--light-cyan2);
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  text-align: right;
+  font-size: var(--fs);
+  font-weight: 700;
+  color: var(--vd-cyan);
+  cursor: pointer;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input .success {
+  border: 2px solid var(--primary-color);
+}
+
+input .error {
+  border: 2px solid rgb(223, 69, 69);
+}
+
+.bill-dollar,
+.person-box {
+  position: relative;
+}
+
+.dollar,
+.person {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+}
+
+.stip-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.stip:not(.custom) {
+  background-color: var(--vd-cyan);
+  color: var(--white);
+}
+
+.stip:not(.custom):hover,
+.stip:not(.custom):focus {
+  background-color: var(--primary-color);
+  color: var(--vd-cyan);
+}
+
+.stip,
+.custom {
+  border-radius: 0.3rem;
+  text-align: center;
+  font-size: var(--fs);
+  font-weight: 700;
+  padding: 0.3rem 0;
+}
+
+.tip-box {
+  width: 100%;
+  background-color: var(--vd-cyan);
+  border-radius: 1rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.amount-box,
+.total-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+h5 {
+  font-size: 1rem;
+  color: var(--light-cyan2);
+}
+
+.h5-tip {
+  color: var(--dark-gcyan2);
+  font-size: 0.8rem;
+}
+
+.tipo {
+  background-color: transparent;
+  color: var(--primary-color);
+  font-size: 40px;
+  font-weight: 700;
+}
+
+button {
+  padding: 0.3rem 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: var(--fs);
+  font-weight: 700;
+  border-radius: 0.3rem;
+  outline: none;
+  border: none;
+  background-color: hsla(184, 85%, 24%, 0.863);
+  color: hsla(186, 14%, 43%, 0.418);
+}
+
+button:hover {
+  background-color: hsl(173, 46%, 69%);
+  color: var(--vd-cyan);
+  transition: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
