@@ -114,6 +114,10 @@ input .error {
   color: var(--white);
 }
 
+.stip:not(.custom).selected {
+  background-color: hsl(172, 67%, 45%);
+}
+
 .stip:not(.custom):hover,
 .stip:not(.custom):focus {
   background-color: var(--primary-color);
