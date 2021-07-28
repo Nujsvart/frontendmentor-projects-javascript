@@ -37,8 +37,8 @@ input {
 
 .container {
   background-color: var(--white);
-  padding: 2rem;
   display: flex;
+  padding: 2rem;
   max-width: 100%;
   width: 920px;
   border-radius: 1.7rem;
@@ -82,11 +82,11 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-input .success {
+.success {
   border: 2px solid var(--primary-color);
 }
 
-input .error {
+.invalid {
   border: 2px solid rgb(223, 69, 69);
 }
 
@@ -165,6 +165,18 @@ h5 {
   color: var(--primary-color);
   font-size: 40px;
   font-weight: 700;
+}
+
+.l-error {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error {
+  color: rgb(223, 69, 69);
+  font-weight: 600;
+  display: none;
+
 }
 
 button {

@@ -32,62 +32,67 @@
     </div>
 
     <div class="container">
-      <div class="bill-box">
-        <div>
-          <label for="bill" class="label-bill">Bill</label>
-          <div class="bill-dollar">
-            <img
-              src="./images/icon-dollar.svg"
-              alt="icon-dollar"
-              class="dollar"
-            />
-            <input type="number" id="bill" placeholder="0" />
+        <div class="bill-box">
+          <div>
+            <label for="bill" class="label-bill">Bill</label>
+            <div class="bill-dollar">
+              <img
+                src="./images/icon-dollar.svg"
+                alt="icon-dollar"
+                class="dollar"
+              />
+              <input type="number" id="bill" placeholder="0"/>
+            </div>
+          </div>
+          <div>
+            <label for="custom" class="label-bill">Select Tip %</label>
+            <div class="stip-box">
+              <input type="button" value="5%" class="stip" data-tip="5"></input>
+              <input type="button" value="10%" class="stip" data-tip="10"></input>
+              <input type="button" value="15%" class="stip" data-tip="15"></input>
+              <input type="button" value="25%" class="stip" data-tip="25"></input>
+              <input type="button" value="50%" class="stip" data-tip="50"></input>
+              <input
+                type="number"
+                id="custom"
+                class="custom"
+                placeholder="Custom"
+              />
+            </div>
+          </div>
+          <div>
+            <div class="l-error">
+              <label for="npeople" class="label-bill">Number of People</label>
+              <small class="error">Can't be zero</small>
+            </div>
+            
+            <div class="person-box">
+              <img
+                src="./images/icon-person.svg"
+                alt="icon-person"
+                class="person"
+              />
+              <input type="number" id="npeople" placeholder="0" />
+            </div>
           </div>
         </div>
-        <div>
-          <label for="custom" class="label-bill">Select Tip %</label>
-          <div class="stip-box">
-            <div id="five" class="stip" data-tip="5">5%</div>
-            <div id="ten" class="stip" data-tip="10">10%</div>
-            <div id="fifteen" class="stip" data-tip="15">15%</div>
-            <div id="tfive" class="stip" data-tip="25">25%</div>
-            <div id="fifty" class="stip" data-tip="50">50%</div>
-            <input
-              type="number"
-              id="custom"
-              class="custom"
-              placeholder="Custom"
-            />
+  
+        <div class="tip-box">
+          <div class="info-box">
+            <div class="amount-box">
+              <h5>Tip Amount <span class="h5-tip">/ person</span></h5>
+              <div class="tipo" id="tip">$0.00</div>
+            </div>
+  
+            <div class="total-box">
+              <h5>Total <span class="h5-tip">/ person</span></h5>
+              <div class="tipo" id="total">$0.00</div>
+            </div>
           </div>
+  
+          <button id="btn" class="btn-empty">Reset</button>
         </div>
-        <div>
-          <label for="npeople" class="label-bill">Number of People</label>
-          <div class="person-box">
-            <img
-              src="./images/icon-person.svg"
-              alt="icon-person"
-              class="person"
-            />
-            <input type="number" id="npeople" placeholder="0" />
-          </div>
-        </div>
-      </div>
 
-      <div class="tip-box">
-        <div class="info-box">
-          <div class="amount-box">
-            <h5>Tip Amount <span class="h5-tip">/ person</span></h5>
-            <div class="tipo" id="tip">$0.00</div>
-          </div>
-
-          <div class="total-box">
-            <h5>Total <span class="h5-tip">/ person</span></h5>
-            <div class="tipo" id="total">$0.00</div>
-          </div>
-        </div>
-
-        <button id="btn" class="btn-empty">Reset</button>
-      </div>
     </div>
 
     <div class="attribution">

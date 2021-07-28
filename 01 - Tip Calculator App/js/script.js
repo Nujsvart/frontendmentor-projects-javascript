@@ -1,15 +1,11 @@
 const billBox = document.querySelector("#bill");
-
 const tipBox = document.querySelectorAll(".stip");
-
 const custom = document.querySelector("#custom");
-
 const nPeople = document.querySelector("#npeople");
-
 const tipAmount = document.querySelector("#tip");
 const tipTotal = document.querySelector("#total");
-
 const btn = document.querySelector("#btn");
+const error = document.querySelector(".error");
 
 class App {
   #bill;
@@ -17,53 +13,68 @@ class App {
   #n;
 
   constructor() {
-    //? Bill
-
-    billBox.addEventListener("change", e => {
-      this.#bill = +e.target.value;
+    billBox.addEventListener("input", e => {
+      this.#bill = parseFloat(e.target.value);
+      this.hesap();
     });
 
-    //? Selected Tip
-
-    tipBox.forEach(el => {
-      el.addEventListener("click", _ => {
-        // Aktif oldugunda background degistir
-        el.classList.toggle("selected");
-
-        // Tip value al
-        this.#tip = +el.dataset.tip;
-        console.log(this.#tip);
-      });
+    tipBox.forEach(btn => {
+      btn.addEventListener("click", this.handleClick.bind(this));
     });
 
-    //? Number of People
+    nPeople.addEventListener("input", this.checkPeople.bind(this));
 
-    nPeople.addEventListener("change", e => {
-      this.#n = +e.target.value;
-      console.log(this.#n);
+    custom.addEventListener("input", e => {
+      this.#tip = +e.target.value;
+      this.hesap();
     });
 
-    document.addEventListener("keypress", e => {
-      if (e.key === "Enter") this._hesap();
-    });
-
-    // Custom event. + hesap
-
-    // Reset btn eventi. veri girisi oldugunda btn backgroundu degistir.
+    btn.addEventListener("click", this.resetBtn);
   }
 
-  _hesap() {
-    const validInputs = (...inputs) =>
-      inputs.every(inp => Number.isFinite(inp));
-    const allPositive = (...inputs) => inputs.every(inp => inp > 0);
+  checkPeople(e) {
+    if (+e.target.value <= 0) {
+      error.style.display = "block";
+      e.target.classList.remove("success");
+      e.target.classList.add("invalid");
+    } else {
+      error.style.display = "none";
+      e.target.classList.remove("invalid");
+      e.target.classList.add("success");
+      this.#n = +e.target.value;
+      this.hesap();
+    }
+  }
 
-    const amount = this.#bill / this.#tip / this.#n;
-    const total = this.#bill / this.#n;
+  // Reset btn eventi. veri girisi oldugunda btn backgroundu degistir.
+  resetBtn(e) {
+    if (e.key === "Enter") return;
+    billBox.value = "";
+    nPeople.value = "";
+    tipAmount.textContent = "$0.00";
+    tipTotal.textContent = "$0.00";
+    error.textContent = "";
+  }
 
-    tipAmount.textContent = amount.toFixed(2);
-    tipTotal.textContent = total;
+  handleClick(e) {
+    tipBox.forEach(btn => {
+      btn.classList.remove("selected");
 
-    // ilk enter'da nan/undefined sorunu coz.
+      if (e.target.value === btn.value) {
+        btn.classList.add("selected");
+        this.#tip = +btn.dataset.tip / 100;
+
+        this.hesap();
+      }
+    });
+  }
+
+  hesap() {
+    const amount = (this.#bill * this.#tip) / this.#n;
+    const total = (this.#bill + amount) / this.#n;
+
+    tipAmount.textContent = `$${amount.toFixed(2)}`;
+    tipTotal.textContent = `$${total.toFixed(2)}`;
   }
 }
 
