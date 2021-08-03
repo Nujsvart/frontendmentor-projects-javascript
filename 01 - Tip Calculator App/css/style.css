@@ -176,7 +176,6 @@ h5 {
   color: rgb(223, 69, 69);
   font-weight: 600;
   display: none;
-
 }
 
 button {
@@ -192,8 +191,17 @@ button {
   color: hsla(186, 14%, 43%, 0.418);
 }
 
-button:hover {
-  background-color: hsl(173, 46%, 69%);
-  color: var(--vd-cyan);
-  transition: cubic-bezier(0.215, 0.61, 0.355, 1);
+.btn-success {
+  background-color: var(--primary-color);
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    width: initial;
+  }
+
+  .stip-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

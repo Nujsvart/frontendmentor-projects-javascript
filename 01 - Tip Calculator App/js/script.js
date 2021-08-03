@@ -1,59 +1,34 @@
-const billBox = document.querySelector("#bill");
+const bill = document.querySelector("#bill");
 const tipBox = document.querySelectorAll(".stip");
 const custom = document.querySelector("#custom");
 const nPeople = document.querySelector("#npeople");
-const tipAmount = document.querySelector("#tip");
-const tipTotal = document.querySelector("#total");
+const results = document.querySelectorAll("#values");
 const btn = document.querySelector("#btn");
 const error = document.querySelector(".error");
 
 class App {
-  #bill;
-  #tip;
-  #n;
+  #billValue = 0;
+  #tipValue = 0;
+  #peopleValue = 0;
 
   constructor() {
-    billBox.addEventListener("input", e => {
-      this.#bill = parseFloat(e.target.value);
-      this.hesap();
-    });
+    bill.addEventListener("input", this.setBillValue.bind(this));
 
     tipBox.forEach(btn => {
       btn.addEventListener("click", this.handleClick.bind(this));
     });
 
-    nPeople.addEventListener("input", this.checkPeople.bind(this));
+    nPeople.addEventListener("input", this.setPeopleValue.bind(this));
 
-    custom.addEventListener("input", e => {
-      this.#tip = +e.target.value;
-      this.hesap();
-    });
+    custom.addEventListener("input", this.setCustomValue.bind(this));
 
-    btn.addEventListener("click", this.resetBtn);
+    btn.addEventListener("click", this.resetBtn.bind(this));
   }
 
-  checkPeople(e) {
-    if (+e.target.value <= 0) {
-      error.style.display = "block";
-      e.target.classList.remove("success");
-      e.target.classList.add("invalid");
-    } else {
-      error.style.display = "none";
-      e.target.classList.remove("invalid");
-      e.target.classList.add("success");
-      this.#n = +e.target.value;
-      this.hesap();
-    }
-  }
+  setBillValue(e) {
+    this.#billValue = parseFloat(e.target.value);
 
-  // Reset btn eventi. veri girisi oldugunda btn backgroundu degistir.
-  resetBtn(e) {
-    if (e.key === "Enter") return;
-    billBox.value = "";
-    nPeople.value = "";
-    tipAmount.textContent = "$0.00";
-    tipTotal.textContent = "$0.00";
-    error.textContent = "";
+    this.hesap();
   }
 
   handleClick(e) {
@@ -62,19 +37,82 @@ class App {
 
       if (e.target.value === btn.value) {
         btn.classList.add("selected");
-        this.#tip = +btn.dataset.tip / 100;
-
+        this.#tipValue = parseFloat(btn.dataset.tip) / 100;
         this.hesap();
       }
+
+      custom.value = "";
     });
   }
 
-  hesap() {
-    const amount = (this.#bill * this.#tip) / this.#n;
-    const total = (this.#bill + amount) / this.#n;
+  setCustomValue(e) {
+    this.#tipValue = parseFloat(e.target.value) / 100;
+    tipBox.forEach(btn => {
+      btn.classList.remove("selected");
+    });
 
-    tipAmount.textContent = `$${amount.toFixed(2)}`;
-    tipTotal.textContent = `$${total.toFixed(2)}`;
+    if (e.target.value >= 1 || e.target.value === "") {
+      custom.classList.remove("invalid");
+      custom.classList.add("success");
+    } else {
+      custom.classList.remove("success");
+      custom.classList.add("invalid");
+    }
+  }
+
+  setPeopleValue(e) {
+    if (e.target.value >= 1) {
+      error.style.display = "none";
+      nPeople.classList.remove("invalid");
+    } else {
+      error.style.display = "block";
+      nPeople.classList.add("invalid");
+    }
+
+    this.#peopleValue = e.target.value;
+
+    this.hesap();
+  }
+
+  resetBtn() {
+    this.#billValue = 0;
+    this.#tipValue = 0;
+    this.#peopleValue = 0;
+
+    bill.value = "";
+    nPeople.value = "";
+    custom.value = "";
+
+    tipBox.forEach(btn => btn.classList.remove("selected"));
+    results.forEach(value => (value.textContent = "$0.00"));
+
+    error.style.display = "none";
+    nPeople.classList.remove("invalid");
+    custom.style.border = "none";
+
+    this.updateDisableButton();
+  }
+
+  updateDisableButton() {
+    if (this.#billValue <= 0 || this.#peopleValue <= 0) {
+      btn.disabled = true;
+      btn.classList.remove("btn-success");
+    } else {
+      btn.disabled = false;
+      btn.classList.add("btn-success");
+    }
+  }
+
+  hesap() {
+    if (this.#peopleValue >= 1) {
+      let tip = this.#billValue * this.#tipValue;
+      let amount = tip / this.#peopleValue;
+      let total = (this.#billValue + tip) / this.#peopleValue;
+
+      results[0].textContent = `$${amount.toFixed(2)}`;
+      results[1].textContent = `$${total.toFixed(2)}`;
+    }
+    this.updateDisableButton();
   }
 }
 
