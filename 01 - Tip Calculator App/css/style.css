@@ -20,8 +20,10 @@
 }
 
 body {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   background-color: var(--light-gcyan);
 }
@@ -43,6 +45,7 @@ input {
   width: 920px;
   border-radius: 1.7rem;
   gap: 2rem;
+  margin: 3rem 0;
 }
 
 label {
@@ -196,9 +199,13 @@ button {
 }
 
 @media screen and (max-width: 900px) {
+  body {
+    height: initial;
+  }
   .container {
     flex-direction: column;
     width: initial;
+    margin: 1rem 0;
   }
 
   .stip-box {
