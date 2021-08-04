@@ -35,6 +35,7 @@ input {
 
 .logo h1 {
   text-transform: uppercase;
+  color: var(--dark-gcyan);
 }
 
 .container {

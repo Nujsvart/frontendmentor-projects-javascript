@@ -2,7 +2,7 @@ const bill = document.querySelector("#bill");
 const tipBox = document.querySelectorAll(".stip");
 const custom = document.querySelector("#custom");
 const nPeople = document.querySelector("#npeople");
-const results = document.querySelectorAll("#values");
+const results = document.querySelectorAll(".values");
 const btn = document.querySelector("#btn");
 const error = document.querySelector(".error");
 
