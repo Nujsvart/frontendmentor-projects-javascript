@@ -1,0 +1,77 @@
+.image {
+  position: relative;
+  background-image: url(/images/bg-pattern-desktop.svg);
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position-x: -5rem;
+  overflow: hidden;
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+
+  &__woman {
+      max-width: 90%;
+
+  }
+
+  &__box {
+    position: absolute;
+    left: -5rem;
+    z-index: 10;
+  }
+}
+
+.faq {
+  flex: 0 0 50%;
+  padding: 6rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: $very-dark-desaturated-blue;
+  }
+
+  .box {
+    border-bottom: 1px solid $light-grayish-blue;
+    color: $very-dark-grayish-blue;
+
+    &__heading {
+        display: flex;
+        align-items: center;
+        margin: 1.6rem 0;
+        cursor: pointer;
+
+      p {
+        font-size: 1.4rem;
+        margin-right: auto;
+      }
+
+      .icon {
+          width: .8rem;
+          height: .8rem;
+          margin-right: 1.5rem;
+
+          &--active {
+              transform: rotate(180deg);
+          }
+      }
+
+      &--active {
+        color: $very-dark-desaturated-blue;
+        font-weight: 700;
+      }
+    }
+
+    &__details {
+      margin-bottom: 1.6rem;
+      display: none;
+
+      &--active {
+        display: block;
+      }
+    }
+  }
+}
