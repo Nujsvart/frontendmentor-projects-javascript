@@ -102,14 +102,18 @@ img {
   cursor: pointer;
 }
 
+.faq .box__heading:hover {
+  color: #f47c57;
+}
+
 .faq .box__heading p {
   font-size: 1.4rem;
   margin-right: auto;
 }
 
 .faq .box__heading .icon {
-  width: .8rem;
-  height: .8rem;
+  width: 0.8rem;
+  height: 0.8rem;
   margin-right: 1.5rem;
 }
 
@@ -121,6 +125,10 @@ img {
 .faq .box__heading--active {
   color: #1d1e35;
   font-weight: 700;
+}
+
+.faq .box__heading--active:hover {
+  color: #1d1e35;
 }
 
 .faq .box__details {

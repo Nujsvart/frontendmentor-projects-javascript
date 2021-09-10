@@ -1,7 +1,7 @@
 .image {
   position: relative;
   background-image: url(/images/bg-pattern-desktop.svg);
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position-x: -5rem;
   overflow: hidden;
@@ -10,10 +10,8 @@
   flex-direction: column;
   justify-content: center;
 
-
   &__woman {
-      max-width: 90%;
-
+    max-width: 90%;
   }
 
   &__box {
@@ -39,10 +37,14 @@
     color: $very-dark-grayish-blue;
 
     &__heading {
-        display: flex;
-        align-items: center;
-        margin: 1.6rem 0;
-        cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin: 1.6rem 0;
+      cursor: pointer;
+
+      &:hover {
+        color: $soft-red;
+      }
 
       p {
         font-size: 1.4rem;
@@ -50,18 +52,22 @@
       }
 
       .icon {
-          width: .8rem;
-          height: .8rem;
-          margin-right: 1.5rem;
+        width: 0.8rem;
+        height: 0.8rem;
+        margin-right: 1.5rem;
 
-          &--active {
-              transform: rotate(180deg);
-          }
+        &--active {
+          transform: rotate(180deg);
+        }
       }
 
       &--active {
         color: $very-dark-desaturated-blue;
         font-weight: 700;
+
+        &:hover {
+          color: $very-dark-desaturated-blue;
+        }
       }
     }
 
