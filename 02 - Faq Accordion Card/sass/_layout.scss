@@ -1,29 +1,62 @@
+.bg-box {
+  position: absolute;
+  z-index: 1000;
+  top: 22rem;
+  left: -8rem;
+
+  @media screen and (max-width: 1350px) {
+    display: none;
+  }
+}
+
 .image {
   position: relative;
   background-image: url(/images/bg-pattern-desktop.svg);
-  background-size: cover;
+  background-size: 90vh;
   background-repeat: no-repeat;
-  background-position-x: -5rem;
+  background-position-x: -36rem;
+  background-position-y: -13rem;
   overflow: hidden;
-  flex: 0 0 50%;
+  flex: 1 1 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  &__woman {
-    max-width: 90%;
+  @media screen and (max-width: 1350px) {
+    display: none;
   }
 
-  &__box {
-    position: absolute;
-    left: -5rem;
-    z-index: 10;
+  &__woman {
+    position: relative;
+
+    .woman {
+      width: 100%;
+      transform: translateX(-5rem);
+
+      @media screen and (max-width: 1350px) {
+        width: 50%;
+        transform: translateX(50%);
+      }
+
+      @media screen and (max-width: 700px) {
+        width: 100%;
+      }
+    }
   }
 }
 
 .faq {
-  flex: 0 0 50%;
+  flex: 1 1 50%;
   padding: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+
+  @media screen and (max-width: 1350px) {
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
 
   h1 {
     font-size: 3rem;
@@ -35,6 +68,10 @@
   .box {
     border-bottom: 1px solid $light-grayish-blue;
     color: $very-dark-grayish-blue;
+
+    @media screen and (max-width: 1350px) {
+      width: 100%;
+    }
 
     &__heading {
       display: flex;
@@ -77,7 +114,25 @@
 
       &--active {
         display: block;
+        animation: moveIn 0.3s ease-in-out;
       }
     }
   }
+}
+
+@keyframes moveIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.attribution {
+  position: absolute;
+  bottom: 2rem;
 }
