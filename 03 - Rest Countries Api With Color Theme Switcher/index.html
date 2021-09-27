@@ -12,17 +12,16 @@
       referrerpolicy="no-referrer"
     />
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main.css" />
     <title>Rest Countries</title>
   </head>
   <body>
-
     <header class="nav">
       <div class="nav__logo">
         <h1>Where in the world?</h1>
       </div>
       <div class="nav__switcher">
-        <a href="#" class="nav__switcher-btn"
+        <a href="#" class="nav__switcher-btn" id="switcher"
           ><i class="far fa-moon"></i> Dark Mode</a
         >
       </div>
@@ -31,11 +30,12 @@
     <main class="homepage">
       <div class="form">
         <form class="search">
-          <i class="fas fa-search search__icon"></i>
+          <i class="fas fa-search search__icon" id="searchBtn"></i>
           <input
             type="search"
             name="search"
             class="search__input"
+            id="search"
             placeholder="Search for a country"
           />
         </form>
@@ -53,104 +53,153 @@
       </div>
 
       <div class="countries">
-
-          <div class="country">
-              <div class="country__flag">
-                  <img src="/img/bayrak.png" alt="">
-              </div>
-              <div class="country__info">
-                  <h2 class="country-name">Germany</h2>
-                  <p class="country-population"><span class="bold">Population:</span> 81,770,900</p>
-                  <p class="country-region"><span class="bold">Region:</span> Europe</p>
-                  <p class="country-capital"><span class="bold">Capital:</span> Berlin</p>
-              </div>
+        <div class="country">
+          <div class="country__flag">
+            <img src="/img/bayrak.png" alt="" />
           </div>
-
-          <div class="country">
-            <div class="country__flag">
-                <img src="/img/bayrak.png" alt="">
-            </div>
-            <div class="country__info">
-                <h2 class="country-name">Germany</h2>
-                <p class="country-population"><span class="bold">Population:</span> 81,770,900</p>
-                <p class="country-region"><span class="bold">Region:</span> Europe</p>
-                <p class="country-capital"><span class="bold">Capital:</span> Berlin</p>
-            </div>
+          <div class="country__info">
+            <h2 class="country-name">Germany</h2>
+            <p class="country-population">
+              <span class="bold">Population:</span> 81,770,900
+            </p>
+            <p class="country-region">
+              <span class="bold">Region:</span> Europe
+            </p>
+            <p class="country-capital">
+              <span class="bold">Capital:</span> Berlin
+            </p>
+          </div>
         </div>
 
         <div class="country">
-            <div class="country__flag">
-                <img src="/img/bayrak.png" alt="">
-            </div>
-            <div class="country__info">
-                <h2 class="country-name">Germany</h2>
-                <p class="country-population"><span class="bold">Population:</span> 81,770,900</p>
-                <p class="country-region"><span class="bold">Region:</span> Europe</p>
-                <p class="country-capital"><span class="bold">Capital:</span> Berlin</p>
-            </div>
+          <div class="country__flag">
+            <img src="/img/bayrak.png" alt="" />
+          </div>
+          <div class="country__info">
+            <h2 class="country-name">Germany</h2>
+            <p class="country-population">
+              <span class="bold">Population:</span> 81,770,900
+            </p>
+            <p class="country-region">
+              <span class="bold">Region:</span> Europe
+            </p>
+            <p class="country-capital">
+              <span class="bold">Capital:</span> Berlin
+            </p>
+          </div>
         </div>
 
         <div class="country">
-            <div class="country__flag">
-                <img src="/img/bayrak.png" alt="">
-            </div>
-            <div class="country__info">
-                <h2 class="country-name">Germany</h2>
-                <p class="country-population"><span class="bold">Population:</span> 81,770,900</p>
-                <p class="country-region"><span class="bold">Region:</span> Europe</p>
-                <p class="country-capital"><span class="bold">Capital:</span> Berlin</p>
-            </div>
+          <div class="country__flag">
+            <img src="/img/bayrak.png" alt="" />
+          </div>
+          <div class="country__info">
+            <h2 class="country-name">Germany</h2>
+            <p class="country-population">
+              <span class="bold">Population:</span> 81,770,900
+            </p>
+            <p class="country-region">
+              <span class="bold">Region:</span> Europe
+            </p>
+            <p class="country-capital">
+              <span class="bold">Capital:</span> Berlin
+            </p>
+          </div>
         </div>
 
         <div class="country">
-            <div class="country__flag">
-                <img src="/img/bayrak.png" alt="">
-            </div>
-            <div class="country__info">
-                <h2 class="country-name">Germany</h2>
-                <p class="country-population"><span class="bold">Population:</span> 81,770,900</p>
-                <p class="country-region"><span class="bold">Region:</span> Europe</p>
-                <p class="country-capital"><span class="bold">Capital:</span> Berlin</p>
-            </div>
+          <div class="country__flag">
+            <img src="/img/bayrak.png" alt="" />
+          </div>
+          <div class="country__info">
+            <h2 class="country-name">Germany</h2>
+            <p class="country-population">
+              <span class="bold">Population:</span> 81,770,900
+            </p>
+            <p class="country-region">
+              <span class="bold">Region:</span> Europe
+            </p>
+            <p class="country-capital">
+              <span class="bold">Capital:</span> Berlin
+            </p>
+          </div>
         </div>
 
+        <div class="country">
+          <div class="country__flag">
+            <img src="/img/bayrak.png" alt="" />
+          </div>
+          <div class="country__info">
+            <h2 class="country-name">Germany</h2>
+            <p class="country-population">
+              <span class="bold">Population:</span> 81,770,900
+            </p>
+            <p class="country-region">
+              <span class="bold">Region:</span> Europe
+            </p>
+            <p class="country-capital">
+              <span class="bold">Capital:</span> Berlin
+            </p>
+          </div>
+        </div>
       </div>
     </main>
 
     <section class="details">
-        <button class="btn btn-back">
-            <i class="fas fa-arrow-left"></i>
-            Back
-        </button>
+      <button class="btn-back">
+        <i class="fas fa-arrow-left"></i>
+        Back
+      </button>
 
-        <div class="content">
-            <div class="content__flag">
-                <img src="/img/bayrak.png" alt="deneme">
-            </div>
-            <div class="content__detail">
-                <h2 class="country-name">Belgium</h2>
-                
-                <p class="country-native"><span class="bold">Native Name:</span> Belgie</p>
-                <p class="country-population"><span class="bold">Population:</span> 81,770,900</p>
-                <p class="country-region"><span class="bold">Region:</span> Europe</p>
-                <p class="country-subregion"><span class="bold">Sub Region:</span> Western Europe</p>
-                <p class="country-capital"><span class="bold">Capital:</span> Berlin</p>
-
-                <p class="country-domain"><span class="bold">Top Level Domain:</span> .be</p>
-                <p class="country-currency"><span class="bold">Currencies:</span> Euro</p>
-                <p class="country-lang"><span class="bold">Languages:</span> Dutch, French, German</p>
-
-                <div class="borders">
-                    <h3>Border Countries:</h3>
-                    <div class="border__countries">
-                        <a href="#" class="border__countries-link">France</a>
-                        <a href="#" class="border__countries-link">Germany</a>
-                        <a href="#" class="border__countries-link">Netherlands</a>
-                    </div>
-                </div>
-
-            </div>
+      <div class="content">
+        <div class="content__flag">
+          <img src="/img/bayrak.png" alt="deneme" />
         </div>
+        <div class="content__detail">
+          <h2 class="country-name">Belgium</h2>
+
+          <div class="content__detail-info">
+            <div class="left">
+              <p class="country-native">
+                <span class="bold">Native Name:</span> Belgie
+              </p>
+              <p class="country-population">
+                <span class="bold">Population:</span> 81,770,900
+              </p>
+              <p class="country-region">
+                <span class="bold">Region:</span> Europe
+              </p>
+              <p class="country-subregion">
+                <span class="bold">Sub Region:</span> Western Europe
+              </p>
+              <p class="country-capital">
+                <span class="bold">Capital:</span> Berlin
+              </p>
+            </div>
+
+            <div class="right">
+              <p class="country-domain">
+                <span class="bold">Top Level Domain:</span> .be
+              </p>
+              <p class="country-currency">
+                <span class="bold">Currencies:</span> Euro
+              </p>
+              <p class="country-lang">
+                <span class="bold">Languages:</span> Dutch, French, German
+              </p>
+            </div>
+          </div>
+
+          <div class="borders">
+            <h3>Border Countries:</h3>
+            <div class="border__countries">
+              <a href="#" class="border__countries-link">France</a>
+              <a href="#" class="border__countries-link">Germany</a>
+              <a href="#" class="border__countries-link">Netherlands</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <script src="js/script.js"></script>

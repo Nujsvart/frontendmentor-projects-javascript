@@ -1,0 +1,27 @@
+.countries {
+  display: grid;
+  //grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 5rem;
+
+  .country {
+    width: 25rem;
+    background-color: var(--dm-text);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+
+    &__info {
+      padding: 2rem;
+
+      .country-name {
+        margin-bottom: 1rem;
+      }
+
+      &:last-child {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}

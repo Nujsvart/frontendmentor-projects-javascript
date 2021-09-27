@@ -1,4 +1,61 @@
 .details {
-    display: none;
-    font-size: 1.6rem;
+  display: block;
+  font-size: 1.6rem;
+  padding: 0 8rem;
+
+  .btn-back {
+    border: none;
+    outline: none;
+    background-color: aqua;
+    padding: 1rem 4rem 1rem 3rem;
+    font-size: 1.4rem;
+    border-radius: 4px;
+    background-color: var(--dm-text);
+    margin: 5rem 0;
+    box-shadow: 0 2px 10px rgba(128, 123, 123, 0.459);
+    cursor: pointer;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__flag {
+      flex-basis: 40%;
+    }
+
+    &__detail {
+      flex-basis: 50%;
+
+      &-info {
+        display: flex;
+        justify-content: space-between;
+        margin: 3rem 0;
+        line-height: 1.7;
+      }
+
+      .borders {
+        display: flex;
+        align-items: center;
+
+        h3 {
+          margin-right: 2rem;
+        }
+
+        a:not(:last-child) {
+          margin-right: 1rem;
+        }
+
+        a {
+          text-decoration: none;
+          color: currentColor;
+          background-color: var(--dm-text);
+          padding: 0.3rem 1rem;
+          box-shadow: 0 2px 10px rgba(128, 123, 123, 0.459);
+          border-radius: 4px;
+        }
+      }
+    }
+  }
 }
