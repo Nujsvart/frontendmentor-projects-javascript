@@ -1,0 +1,14 @@
+{
+    "version": 3,
+    "mappings": "ACAA,OAAO,CAAC,yFAAI;AAEZ,AAAA,KAAK,CAAC;EACJ,aAAa,CAAA,mBAAC;EACd,eAAe,CAAA,mBAAC;EAChB,SAAS,CAAA,iBAAC;EAEV,SAAS,CAAA,kBAAC;EACV,UAAU,CAAA,gBAAC;EACX,eAAe,CAAA,gBAAC;CACjB;;AAED,AAAA,CAAC;AACD,CAAC,AAAA,QAAQ;AACT,CAAC,AAAA,OAAO,CAAC;EACP,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,UAAU,EAAE,OAAO;CACpB;;AAED,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,UAAU;EACtB,gBAAgB,EAAE,oBAAoB;EACtC,SAAS,EAAE,KAAK;CACjB;;AAED,AAAA,IAAI,CAAC;EACH,WAAW,EAAE,yBAAyB;EACtC,SAAS,EAAE,MAAM;EACjB,KAAK,EAAE,cAAc;CACtB;;AAED,AAAA,SAAS,CAAC;EACN,OAAO,EAAE,IAAI;CAChB;;AIlCD,AAAA,QAAQ,CAAC;EACL,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,MAAM;CACpB",
+    "sources": [
+        "../sass/main.scss",
+        "../sass/_base.scss",
+        "../sass/_header.scss",
+        "../sass/_form.scss",
+        "../sass/_countries.scss",
+        "../sass/_details.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
