@@ -70,6 +70,14 @@ img {
   font-weight: 800;
 }
 
+.nav__logo .logo {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .nav__switcher-btn {
   text-decoration: none;
   color: currentColor;
@@ -142,7 +150,7 @@ img {
 }
 
 .countries .country {
-  width: 25rem;
+  max-width: 30rem;
   background-color: var(--dm-text);
   border-radius: 4px;
   overflow: hidden;
@@ -164,7 +172,7 @@ img {
 }
 
 .details {
-  display: block;
+  display: none;
   font-size: 1.6rem;
   padding: 0 8rem;
 }
@@ -187,6 +195,8 @@ img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;

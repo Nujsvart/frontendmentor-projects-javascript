@@ -9,6 +9,11 @@
   &__logo {
     font-size: 1.1rem;
     font-weight: 800;
+
+    .logo {
+      cursor: pointer;
+      user-select: none;
+    }
   }
 
   &__switcher {
