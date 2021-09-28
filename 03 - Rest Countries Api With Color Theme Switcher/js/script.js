@@ -55,9 +55,7 @@ async function filterByRegion(e) {
 
   countries.innerHTML = "";
 
-  renderHomapage(data);
-
-  //document.querySelector(".dropdown").reset();
+  renderHomepage(data);
 }
 
 //? Show Country Detail Page
@@ -70,18 +68,15 @@ async function showDetail(e) {
     .querySelector(".country__info")
     .firstElementChild.textContent.toLowerCase();
 
-  // fetch by country name
-
-  const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
-  const data = await res.json();
+  const data = await fetchByFullName(countryName);
 
   homepage.style.display = "none";
   detailsPage.style.display = "block";
 
   renderDetails(data);
-
-  //! burasi devam
 }
+
+//? Render
 
 function renderHomepage(data) {
   data.forEach(country => {
@@ -115,6 +110,7 @@ function renderDetails(data) {
             <div class="content__flag">
                 <img src="${country.flags.png}" alt="${country.name.common}" />
             </div>
+
             <div class="content__detail">
                 <h2 class="country-name">${country.name.common}</h2>
 
@@ -148,35 +144,97 @@ function renderDetails(data) {
                         <span class="bold">Languages:</span> ...
                         </p>
                 </div>
+              </div>
+
+              <div class="borders">
+                  <h3>Border Countries:</h3>
+                  <div class="border__countries"></div>
+              </div>
             </div>
 
-            <div class="borders">
-                <h3>Border Countries:</h3>
-                <div class="border__countries">
-                    <a href="#" class="border__countries-link">France</a>
-                    <a href="#" class="border__countries-link">Germany</a>
-                    <a href="#" class="border__countries-link">Netherlands</a>
-                </div>
-            </div>
-        </div>
-
-        
         `;
 
-    //! burasi devam
-
     detailContent.insertAdjacentHTML("beforeend", html);
+  });
+
+  //? render borders
+
+  renderBorders(data);
+}
+
+function renderBorders(data) {
+  const borders = data.map(country => country.borders);
+
+  borders.map(border => {
+    const borderEle = document.querySelector(".border__countries");
+
+    if (!border) return;
+
+    //? Fetch country by [code] Name
+
+    border.forEach(async code => {
+      const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
+      const data = await res.json();
+
+      const { name } = data[0];
+
+      borderEle.innerHTML += `<a href="${name.common}" class="border__countries-link">${name.common}</a>`;
+    });
+  });
+}
+
+function showBorderDetail(e) {
+  const bordersEl = e.currentTarget
+    .querySelector(".borders")
+    .querySelector(".border__countries");
+  const allBorders = bordersEl.querySelectorAll(".border__countries-link");
+
+  allBorders.forEach(async border => {
+    if (e.target.textContent !== border.textContent) return;
+
+    const countryName = border.textContent;
+
+    const data = await fetchByFullName(countryName);
+
+    //? clear details page
+    detailContent.innerHTML = "";
+
+    renderDetails(data);
   });
 }
 
 function goBack() {
-    showHomePage();
+  window.history.back();
 }
 
 function showHomePage() {
   detailsPage.style.display = "none";
   detailContent.innerHTML = "";
   homepage.style.display = "grid";
+}
+
+function toggleTheme() {
+  const body = document.body;
+  body.classList.toggle("darkmode");
+
+  const icon = document.querySelector(".modeicon");
+
+  if (body.classList.contains("darkmode")) {
+    icon.classList.remove("far");
+    icon.classList.add("fas");
+  } else {
+    icon.classList.remove("fas");
+    icon.classList.add("far");
+  }
+}
+
+async function fetchByFullName(countryName) {
+  const res = await fetch(
+    `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
+  );
+  const data = await res.json();
+
+  return data;
 }
 
 init();
@@ -188,3 +246,5 @@ filter.forEach(option => option.addEventListener("click", filterByRegion));
 countries.addEventListener("click", showDetail);
 backBtn.addEventListener("click", goBack);
 logo.addEventListener("click", showHomePage);
+switcher.addEventListener("click", toggleTheme);
+detailContent.addEventListener("click", showBorderDetail);

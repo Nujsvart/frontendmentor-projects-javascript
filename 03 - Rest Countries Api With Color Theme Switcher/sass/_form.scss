@@ -23,29 +23,43 @@
       width: 100%;
       border-radius: 4px;
       border: none;
+      color: currentColor;
       box-shadow: var(--box-shadow);
       background-color: var(--dm-text);
+    }
+
+    .darkmode &__input {
+      background-color: var(--dm-elements);
+      box-shadow: var(--boxsh-dark);
     }
   }
 }
 
+.darkmode .form {
+  color: var(--dm-text);
+}
+
 .dropdown {
-    background-color: pink;
-    border-radius: 4px;
+  border-radius: 4px;
+}
 
-    .filter {
-        padding: 1rem 2rem;
-        background-color: var(--dm-text);
-        border: none;
-        outline: none;
-        color: var(--lm-input);
+.filter {
+  padding: 1rem 2rem;
+  background-color: var(--dm-text);
+  border: none;
+  outline: none;
+  color: var(--lm-input);
 
-        option {
-            border: none;
-            outline: none;
+  option {
+    border: none;
+    outline: none;
 
-            // devam et
-        }
-        
-    }
+    // devam et
+  }
+}
+
+.darkmode .filter {
+  background-color: var(--dm-elements);
+  color: var(--dm-text);
+  box-shadow: var(--boxsh-dark);
 }

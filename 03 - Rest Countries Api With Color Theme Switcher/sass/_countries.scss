@@ -3,6 +3,7 @@
   //grid-template-columns: repeat(4,1fr);
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 5rem;
+  min-height: 100vh;
 
   .country {
     max-width: 30rem;
@@ -24,4 +25,9 @@
       }
     }
   }
+}
+
+.darkmode .country {
+  background-color: var(--dm-elements);
+  box-shadow: var(--boxsh-dark);
 }

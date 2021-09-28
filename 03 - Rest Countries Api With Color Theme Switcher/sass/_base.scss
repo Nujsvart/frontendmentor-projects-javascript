@@ -10,6 +10,7 @@
   --lm-background: hsl(0, 0%, 98%);
 
   --box-shadow: 0 2px 10px rgba(128, 123, 123, 0.219);
+  --boxsh-dark: 0 5px 5px rgba(0, 0, 0, 0.123);
 }
 
 *,
@@ -26,13 +27,22 @@ html {
   font-size: 62.5%;
 }
 
+.darkmode html {
+  background-color: var(--dm-background);
+  
+}
+
+
 body {
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   color: var(--lm-text);
   line-height: 1.5;
   display: grid;
+
 }
+
+
 
 img {
   max-width: 100%;
@@ -46,4 +56,9 @@ img {
 .homepage {
   display: grid;
   padding: 0 8rem;
+}
+
+.darkmode {
+  background-color: var(--dm-background);
+  color: var(--dm-text);
 }
