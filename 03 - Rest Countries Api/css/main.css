@@ -48,6 +48,8 @@ body {
 img {
   max-width: 100%;
   display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .bold {
@@ -245,6 +247,7 @@ img {
 @media only screen and (max-width: 37.5em) {
   .countries .country {
     max-width: 100%;
+    height: initial;
   }
 }
 
@@ -257,9 +260,11 @@ img {
   height: 50%;
 }
 
-.countries .country__flag img {
-  -o-object-fit: cover;
-     object-fit: cover;
+@media only screen and (max-width: 60em) {
+  .countries .country__flag {
+    margin-bottom: 1rem;
+    height: auto;
+  }
 }
 
 .countries .country__info {
