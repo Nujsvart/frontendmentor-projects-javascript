@@ -7,14 +7,33 @@
 
   .country {
     max-width: 30rem;
+    height: 40rem;
     background-color: var(--dm-text);
     border-radius: 4px;
     overflow: hidden;
     box-shadow: var(--box-shadow);
     cursor: pointer;
+    transition: transform 0.2s ease-in;
+
+    @media only screen and (max-width: 37.5em) {
+      max-width: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &__flag {
+      height: 50%;
+
+      img {
+        object-fit: cover;
+      }
+    }
 
     &__info {
       padding: 2rem;
+      height: 50%;
 
       .country-name {
         margin-bottom: 1rem;

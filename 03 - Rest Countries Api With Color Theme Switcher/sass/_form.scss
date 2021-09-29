@@ -5,9 +5,20 @@
   margin: 3rem 0;
   color: var(--lm-input);
 
+  @media only screen and (max-width: 37.5em) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: initial;
+  }
+
   .search {
     position: relative;
     width: 35%;
+
+    @media only screen and (max-width: 37.5em) {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
 
     &__icon {
       position: absolute;
@@ -37,6 +48,8 @@
 
 .darkmode .form {
   color: var(--dm-text);
+  border: none;
+  outline: none;
 }
 
 .dropdown {
@@ -49,13 +62,6 @@
   border: none;
   outline: none;
   color: var(--lm-input);
-
-  option {
-    border: none;
-    outline: none;
-
-    // devam et
-  }
 }
 
 .darkmode .filter {

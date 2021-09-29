@@ -25,6 +25,10 @@ html {
   box-sizing: border-box;
   background-color: var(--lm-background);
   font-size: 62.5%;
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 55%;
+  }
 }
 
 .darkmode html {
@@ -56,6 +60,10 @@ img {
 .homepage {
   display: grid;
   padding: 0 8rem;
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 0 5rem;
+  }
 }
 
 .darkmode {

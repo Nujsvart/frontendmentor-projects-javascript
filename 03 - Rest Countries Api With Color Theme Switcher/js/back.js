@@ -16,7 +16,7 @@ init();
 
 //? Show all Countries
 async function init() {
-  const res = await fetch(`https://restcountries.com/v2/all`);
+  const res = await fetch(`https://restcountries.com/v3.1/all`);
   const data = await res.json();
 
   document.querySelector(".dropdown").reset();
@@ -49,9 +49,9 @@ function searchCountry(e) {
 //? Filter Countries by Region
 async function filterByRegion(e) {
   e.preventDefault();
-  const region = e.target.value.toLowerCase();
+  const region = e.target.value;
 
-  const res = await fetch(`https://restcountries.com/v2/continent/${region}`);
+  const res = await fetch(`https://restcountries.com/v3.1/region/${region}`);
   const data = await res.json();
 
   countries.innerHTML = "";
@@ -84,12 +84,12 @@ function renderHomepage(data) {
     const html = `
             <div class="country">
                 <div class="country__flag">
-                    <img src="${country.flag}" alt="${country.name}" />
+                    <img src="${country.flags.png}" alt="${country.name.common}" />
                 </div>
                 <div class="country__info">
-                    <h2 class="country-name">${country.name}</h2>
+                    <h2 class="country-name">${country.name.common}</h2>
                     <p class="country-population">
-                        <span class="bold">Population:</span> ${country.population}
+                        <span class="bold">Population:</span> ${country.area}
                     </p>
                     <p class="country-region">
                         <span class="bold">Region:</span> ${country.region}
@@ -109,23 +109,23 @@ function renderDetails(data) {
   data.forEach(country => {
     const html = `
             <div class="content__flag">
-                <img src="${country.flag}" alt="${country.name}" />
+                <img src="${country.flags.png}" alt="${country.name.common}" />
             </div>
 
             <div class="content__detail">
-                <h2 class="country-name">${country.name}</h2>
+                <h2 class="country-name">${country.name.common}</h2>
 
                 <div class="content__detail-info">
                     <div class="left">
                         <p class="country-native">
                         <span class="bold">Native Name:</span> ${
-                          country.nativeName
+                          country.name.nativeName[
+                            Object.keys(country.name.nativeName)[0]
+                          ].common
                         }
                         </p>
                         <p class="country-population">
-                        <span class="bold">Population:</span> ${
-                          country.population
-                        }
+                        <span class="bold">Population:</span> ${country.area}
                         </p>
                         <p class="country-region">
                         <span class="bold">Region:</span> ${country.region}
@@ -143,18 +143,20 @@ function renderDetails(data) {
                 <div class="right">
                         <p class="country-domain">
                         <span class="bold">Top Level Domain:</span> ${
-                          country.topLevelDomain[0]
+                          country.tld[0]
                         }
                         </p>
                         <p class="country-currency">
-                        <span class="bold">Currencies:</span> ${country.currencies
-                          .map(curr => curr.name)
-                          .join(", ")}
+                        <span class="bold">Currencies:</span> ${
+                          country.currencies[Object.keys(country.currencies)[0]]
+                            .name
+                        }
                         </p>
                         <p class="country-lang">
-                        <span class="bold">Languages:</span> ${country.languages
-                          .map(lang => lang.name)
-                          .join(", ")}
+                        <span class="bold">Languages:</span> ${[data][0]
+                          .map(ulke => ulke.languages)
+                          .map(lang => Object.values(lang))
+                          .join("")}
                         </p>
                 </div>
               </div>
@@ -186,12 +188,12 @@ function renderBorders(data) {
     //? Fetch country by [code] Name
 
     border.forEach(async code => {
-      const res = await fetch(`https://restcountries.com/v2/alpha/${code}`);
+      const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
       const data = await res.json();
 
-      const { name } = data;
+      const { name } = data[0];
 
-      borderEle.innerHTML += `<a href="#" class="border__countries-link">${name}</a>`;
+      borderEle.innerHTML += `<a href="#" class="border__countries-link">${name.common}</a>`;
     });
   });
 }
@@ -223,9 +225,6 @@ function goBack() {
 function showHomePage() {
   detailsPage.style.display = "none";
   detailContent.innerHTML = "";
-  search.value = "";
-  countries.innerHTML = "";
-  init();
   homepage.style.display = "grid";
 }
 
@@ -246,7 +245,7 @@ function toggleTheme() {
 
 async function fetchByFullName(countryName) {
   const res = await fetch(
-    `https://restcountries.com/v2/name/${countryName}?fullText=true`
+    `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
   );
   const data = await res.json();
 
